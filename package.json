@@ -1,0 +1,80 @@
+{
+  "name": "contactus-admin-ui",
+  "version": "1.0.0",
+  "private": true,
+  "description": "contactus admin ui module",
+  "scripts": {
+    "start:dev": "webpack-dev-server  --hot --inline --progress --colors --config webpack.dev.config.js --host localhost --port 3000",
+    "build:dev": "webpack --progress --colors --config webpack.dev.config.js",
+    "build:qa": "webpack --progress --colors --config webpack.qa.config.js",
+    "build:staging": "webpack --progress --colors --config webpack.staging.config.js",
+    "build:prod": "webpack --progress --colors --config webpack.prod.config.js",
+    "watch": "webpack --progress  --colors --watch --config webpack.dev.config.js",
+    "lint": "./node_modules/.bin/gulp lint",
+    "test": "./node_modules/.bin/_mocha ./test/.settings.js ./test/PageTable.test.jsx --require ignore-styles",
+    "validate-webpack:dev": "webpack-validator webpack.dev.config.js",
+    "validate-webpack:prod": "webpack-validator webpack.prod.config.js",
+    "deployGhPage": "./node_modules/.bin/gulp deployGhPage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.intuit.com/spatel10/contactus-admin-ui.git"
+  },
+  "author": {
+    "name": "Shreya K"
+  },
+  "keywords": [
+    "admin"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "alt": "^0.18.4",
+    "classnames": "^2.2.5",
+    "eslint-loader": "^1.5.0",
+    "lodash": "^4.15.0",
+    "react": "^15.1.0",
+    "react-addons-css-transition-group": "^15.3.1",
+    "react-dom": "^15.1.0",
+    "react-modal": "^1.4.0",
+    "react-router": "^2.4.1",
+    "sinon": "^1.17.5",
+    "superagent": "^2.0.0",
+    "webpack": "^1.13.3"
+  },
+  "devDependencies": {
+    "@sbg/eslint-config-sbg-ui": "^2.2.0",
+    "autoprefixer-loader": "^3.2.0",
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-decorators": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-register": "^6.9.0",
+    "chai": "^3.5.0",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.23.1",
+    "enzyme": "^2.3.0",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.4.2",
+    "eslint-plugin-react": "^5.2.2",
+    "file-loader": "^0.9.0",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^1.2.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-gh-pages": "^0.5.4",
+    "html-webpack-plugin": "^2.19.0",
+    "ignore-styles": "^4.0.0",
+    "image-webpack-loader": "^2.0.0",
+    "jsdom": "^9.2.1",
+    "json-loader": "^0.5.4",
+    "mocha": "^2.5.3",
+    "node-sass": "^3.7.0",
+    "react-addons-test-utils": "^15.1.0",
+    "react-hot-loader": "^1.3.0",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-validator": "^2.2.2"
+  }
+}
