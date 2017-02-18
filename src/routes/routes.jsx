@@ -10,12 +10,12 @@ class Routes extends React.Component {
         return <Router history={hashHistory}>
             <Route path="/" component={Layout}>
                <Route path="exp-one" component={PocOne}>
-                < Route path="/exp-one/show-1/data-set" component={PocOneSetOne}/>
-                < Route path="/exp-one/show-10/data-set" component={PocOneSetOne}/>
-                < Route path="/exp-one/show-100/data-set" component={PocOneSetOne}/>
-                < Route path="/exp-one/show-1000/data-set" component={PocOneSetOne}/>
-                 < Route path="/exp-one/show-10000/data-set" component={PocOneSetOne}/>
-                 < Route path="/exp-one/show-100000/data-set" component={PocOneSetOne}/>
+                < Route path="/exp-one/show-1" component={PocOneSetOne}/>
+                < Route path="/exp-one/show-10" component={PocOneSetOne}/>
+                < Route path="/exp-one/show-100" component={PocOneSetOne}/>
+                < Route path="/exp-one/show-1000" component={PocOneSetOne}/>
+                 < Route path="/exp-one/show-10000" component={PocOneSetOne}/>
+                 < Route path="/exp-one/show-100000" component={PocOneSetOne}/>
                </Route>
             </Route>
         </Router>;
