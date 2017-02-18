@@ -9,9 +9,14 @@ class Routes extends React.Component {
     render() {
         return <Router history={hashHistory}>
             <Route path="/" component={Layout}>
-            <Route path="poc_one" component={PocOne}/>
-            <Route path="poc_one/data-set" component={PocOneSetOne}/>
-                <Route path="poc_two" component={PocOne}/>
+               <Route path="exp-one" component={PocOne}>
+                < Route path="/exp-one/show-1/data-set" component={PocOneSetOne}/>
+                < Route path="/exp-one/show-10/data-set" component={PocOneSetOne}/>
+                < Route path="/exp-one/show-100/data-set" component={PocOneSetOne}/>
+                < Route path="/exp-one/show-1000/data-set" component={PocOneSetOne}/>
+                 < Route path="/exp-one/show-10000/data-set" component={PocOneSetOne}/>
+                 < Route path="/exp-one/show-100000/data-set" component={PocOneSetOne}/>
+               </Route>
             </Route>
         </Router>;
     }

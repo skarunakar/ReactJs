@@ -1,13 +1,18 @@
 import React  from 'react';
 import Request from 'react-http-request';
 
-export default class PocOne extends React.Component {
+export default class PocOneSetOne extends React.Component {
     constructor(){
         super();
         this.item = [];
+        this.state ={};
         this.responseRecieved = true;
         this.invokeRender = this.invokeRender.bind(this);
     }
+    onChange(state){
+        this.setState(state);
+    }
+
     invokeRender() {
         this.responseRecieved = false;
         this.setState(this.state);
@@ -15,8 +20,8 @@ export default class PocOne extends React.Component {
     render() {
         var table =  this.item.map(function(trow,index){
             return(
-                <tr>
-                    <td>{trow._id}</td>
+                <tr key={index}>
+                    <td key={index}>{trow._id}</td>
                     <td>{trow.name}</td>
                     <td>{trow.gender}</td>
                     <td>{trow.age}</td>
@@ -44,6 +49,7 @@ export default class PocOne extends React.Component {
                                 <div>
                                  <p>DOM load for {this.props.location.query.dataSet}</p>
                                 <table>
+                                    <tbody>
                                     <tr>
                                         <th>Id</th>
                                         <th>Name</th>
@@ -52,6 +58,7 @@ export default class PocOne extends React.Component {
                                         <th>Marks</th>
                                     </tr>
                                     {table}
+                                </tbody>
                                 </table>
                                 </div>
                             );

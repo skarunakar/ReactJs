@@ -1,11 +1,15 @@
-.header {
-  border: 1px double blue;
-  display: flex;
+.reactjs-poc {
+  display:flex;
   flex-direction: row;
-  width: 80%;
-  height: 100px;
-  .con-opt {
-    margin: 35px;
-    color:black;
+  height:100VH;
+  .body {
+    overflow-y: scroll;
+  }
+  .nav-bar {
+    min-width: 175px;
+    background-color: #193048;
+    box-shadow: inset -3px 0 rgba(0,0,0,0.15);
+    height: inherit;
+    overflow: auto;
   }
 }

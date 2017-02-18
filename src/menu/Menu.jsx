@@ -11,7 +11,7 @@ class Menu extends React.Component {
         return <ul className="nav-menu">
             {this.props.menuItems.map(function(item, index) {
                 return <li key={index} className="nav-item">
-                    <Link to={item.path} className="nav-label">
+                    <Link to={{pathname:item.path,query:{dataSet:item.dataSet}}}className="nav-label">
                         <span dangerouslySetInnerHTML={{__html: item.icon}} ></span>
                         <span className="menu-title">{item.title}</span>
                     </Link>
