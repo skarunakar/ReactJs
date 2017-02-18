@@ -1,0 +1,11 @@
+.header {
+  border: 1px double blue;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 100px;
+  .con-opt {
+    margin: 35px;
+    color:black;
+  }
+}

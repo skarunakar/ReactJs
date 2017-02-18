@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Render from "../components/Rendering.jsx"
+import Route from "../routes/routes.jsx";
 import sass from "../sass/app.scss";
 
 
 ReactDOM.render(
-    <Render />,
+    <Route />,
     document.getElementById('reactjsApp')
 );
 
