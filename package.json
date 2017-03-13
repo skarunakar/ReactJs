@@ -6,9 +6,6 @@
   "scripts": {
     "start:dev": "webpack-dev-server  --hot --inline --progress --colors --config webpack.dev.config.js --host localhost --port 3000",
     "build:dev": "webpack --progress --colors --config webpack.dev.config.js",
-    "build:qa": "webpack --progress --colors --config webpack.qa.config.js",
-    "build:staging": "webpack --progress --colors --config webpack.staging.config.js",
-    "build:prod": "webpack --progress --colors --config webpack.prod.config.js",
     "watch": "webpack --progress  --colors --watch --config webpack.dev.config.js",
     "lint": "./node_modules/.bin/gulp lint",
     "test": "./node_modules/.bin/_mocha ./test/.settings.js ./test/PageTable.test.jsx --require ignore-styles",
