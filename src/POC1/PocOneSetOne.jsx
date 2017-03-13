@@ -1,25 +1,54 @@
 import React  from 'react';
-import Request from 'react-http-request';
+import DataService from "./DataService.jsx";
+import DataStore from "./DataStore.jsx";
+import trial from "./trial.json";
+
 
 export default class PocOneSetOne extends React.Component {
-    constructor(){
-        super();
-        this.item = [];
-        this.state ={};
-        this.responseRecieved = true;
-        this.invokeRender = this.invokeRender.bind(this);
+    constructor(props) {
+        super(props);
+        this.state = {
+            complete : ""
+        }
+        this.state = DataStore.getState();
+        this.update = this.update.bind(this);
+        this.trial = trial.list;
     }
-    onChange(state){
+    onChange(state) {
         this.setState(state);
     }
-
-    invokeRender() {
-        this.responseRecieved = false;
-        this.setState(this.state);
+    componentDidMount() {
+        var query_param = this.props.location.query.dataSet;
+        DataStore.listen(this.onChange.bind(this));
+        DataService.loadAllRecords("http://localhost:8000?dataSet=" + query_param);
+    }
+    componentDidUpdate(){
+        if (window.performance.getEntriesByName("startLoad").length != 0) {
+            window.performance.mark("endLoading");
+            window.performance.measure("name", "startLoad", "endLoading");
+            var array = window.performance.getEntriesByType('measure');
+            console.log(array[array.length - 1].duration);
+            window.performance.clearMarks();
+            window.performance.clearMeasures();
+        }     
+    }
+    componentWillReceiveProps(newProps){
+        DataService.loadAllRecords("http://localhost:8000?dataSet=" + newProps.location.query.dataSet);
+    }
+    componentWillUnmount() {
+            DataStore.unlisten(this.onChange.bind(this));
+     }
+    update(e){
+      var id = this.props.location.query.dataSet;
+      var index = Math.log(id)/Math.log(10)
+      index = Math.ceil(index)
+      this.state.recordList = this.trial[index];
+      window.performance.mark("startLoad");
+      this.setState(this.state);
     }
     render() {
-        var table =  this.item.map(function(trow,index){
-            return(
+        var table = this.state.recordList.map(function (trow, index) {
+            return (
                 <tr key={index}>
                     <td key={index}>{trow._id}</td>
                     <td>{trow.name}</td>
@@ -28,44 +57,31 @@ export default class PocOneSetOne extends React.Component {
                     <td>{trow.marks}</td>
                 </tr>);
         }.bind(this));
-        var query_param = this.props.location.query.dataSet;
+        var displayStat = this.state.recordList.length == 0 ? null : <div className="displayStat">
+            <p className="stat-head">DOM RENDERING TIME </p>
+            <div><p> Complete time to for request to render => {this.state.complete}</p></div>
+            <button className="update-button" onClick={this.update}>Update Records</button>
+        </div>;
         return (
-            <Request
-                url= {'http://localhost:8000?dataSet=' + query_param}
-                method='get'
-                accept='application/json'
-                verbose={true}
-            >
-                {
-                    ({error, result, loading}) => {
-                        if (loading) {
-                            return <div>loading...</div>;
-                        } else {
-                            this.item = result.body.var;
-                            if(this.responseRecieved){
-                                this.invokeRender();
-                            }
-                            return (
-                                <div>
-                                 <p>DOM load for {this.props.location.query.dataSet}</p>
-                                <table>
-                                    <tbody>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Name</th>
-                                        <th>Gender</th>
-                                        <th>Age</th>
-                                        <th>Marks</th>
-                                    </tr>
-                                    {table}
-                                </tbody>
-                                </table>
-                                </div>
-                            );
-                        }
-                    }
-                }
-            </Request>
+            <div className="renderLayout">
+                <div>
+                    <p className="renderData">DOM load for {this.props.location.query.dataSet} records in
+                        REACTJS </p>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Marks</th>
+                        </tr>
+                        {table}
+                        </tbody>
+                    </table>
+                </div>
+                {displayStat}
+            </div>
         );
     }
 }

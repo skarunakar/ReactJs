@@ -12,4 +12,35 @@
     height: inherit;
     overflow: auto;
   }
+  .renderLayout {
+    display: flex;
+    flex-direction: row;
+    margin:20px;
+    margin-left: 50px;
+    .displayStat{
+      border: 2px dashed red;
+      margin-top : 150px;
+      margin-left:50px;
+      height:150px;
+      width:320px;
+      padding: 10px;
+      .stat-head{
+        font-weight: 500;
+        padding-left:60px;
+      }
+      .update-button {
+        margin-left:100px;
+        margin-top : 100px;
+        width: 145px;
+        height: 40px;
+        font-size: 13px;
+      }
+    }
+    .renderData{
+      border:2px solid blue;
+      padding: 10px;
+    }
+  }
+
+
 }

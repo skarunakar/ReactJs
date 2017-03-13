@@ -1,8 +1,8 @@
 {
-  "name": "contactus-admin-ui",
+  "name": "ReactJS",
   "version": "1.0.0",
   "private": true,
-  "description": "contactus admin ui module",
+  "description": "React JS benchmark module",
   "scripts": {
     "start:dev": "webpack-dev-server  --hot --inline --progress --colors --config webpack.dev.config.js --host localhost --port 3000",
     "build:dev": "webpack --progress --colors --config webpack.dev.config.js",
@@ -18,13 +18,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.intuit.com/spatel10/contactus-admin-ui.git"
+    "url": "git@github.com:shreyakarunakar/Reactjs.git"
   },
   "author": {
     "name": "Shreya K"
   },
   "keywords": [
-    "admin"
+    "react"
   ],
   "license": "ISC",
   "dependencies": {
@@ -35,7 +35,6 @@
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.3.1",
     "react-dom": "^15.1.0",
-    "react-http-request": "^1.0.3",
     "react-modal": "^1.4.0",
     "react-router": "^2.4.1",
     "sinon": "^1.17.5",
